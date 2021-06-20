@@ -9,14 +9,14 @@ public class Stairs : MonoBehaviour
     [SerializeField]
     GameObject canvas;
     [SerializeField]
-    canvasTransition transitioner;
+    //canvasTransition transitioner;
     bool trans = false;
     float timer = 2f;
     public GameObject tooltip;
     private void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
-        transitioner = canvas.GetComponentInChildren<canvasTransition>();
+       // transitioner = canvas.GetComponentInChildren<canvasTransition>();
         tooltip.SetActive(false);
     }
     // Update is called once per frame
@@ -26,16 +26,16 @@ public class Stairs : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                transitioner.gameObject.SetActive(true);
-                transitioner.fadeOut();
+               // transitioner.gameObject.SetActive(true);
+               // transitioner.fadeOut();
                 trans = true;
                 
             }
         }
         if(trans)
         {
-            SoundTrack.soundTrack.StopSoundtrack();
-            FXplayer.fxplayer.PlayFX(fxOptions.stairs);
+           // SoundTrack.soundTrack.StopSoundtrack();
+            //FXplayer.fxplayer.PlayFX(fxOptions.stairs);
             timer -= Time.deltaTime;
             if(timer <= 0)
             {
@@ -45,8 +45,8 @@ public class Stairs : MonoBehaviour
     }
     private void goToNextScene()
     {
-        GameManager.instance.increaseLevel();
-        GameManager.instance.calculateDifficulty();
+        //GameManager.instance.increaseLevel();
+      //  GameManager.instance.calculateDifficulty();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void OnTriggerEnter2D(Collider2D collision)
