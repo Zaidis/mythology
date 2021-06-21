@@ -282,14 +282,14 @@ public class MapMaker : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (GameManager.instance != null && GameManager.instance.getLevel() % 3 == 0)
-        {
-            int chance = Random.Range(1, 20);
-            if (chance >= 5)
-            {
-                bossRoom = true;
-            }
-        }
+        //if (GameManager.instance != null && GameManager.instance.getLevel() % 3 == 0)
+        //{
+         //   int chance = Random.Range(1, 20);
+        //    if (chance >= 5)
+        //    {
+        //        bossRoom = true;
+         //   }
+        //}
         if (bossRoom)
         {
             mapThingy = this;
