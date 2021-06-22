@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerManager>();
     }
     private void Start() {
-        maxHealth = 10;
+        maxHealth = 5;
         health = maxHealth;
     }
     public void Update() {
@@ -36,6 +36,14 @@ public class GameManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Y)) {
             HealPlayer(1);
         }
+    }
+
+    public void PrintStats() {
+        print("HEALTH: " + health);
+        print("MAX HEALTH: " + maxHealth);
+        print("SPEED: " + speed);
+        print("DAMAGE: " + damage);
+        print("ATTACK SPEED: " + attackSpeed);
     }
     public void ChangeHealthBarUI() {
         int num = health;
@@ -55,7 +63,6 @@ public class GameManager : MonoBehaviour
         }
         ChangeHealthBarUI();
     }
-
     public void DamagePlayer(int amount) {
         health -= amount;
         if (health <= 0) {

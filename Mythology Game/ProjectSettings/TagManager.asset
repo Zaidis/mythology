@@ -7,6 +7,8 @@ TagManager:
   - Intersection
   - Enemy
   - Ankh
+  - Djed
+  - Was
   layers:
   - Default
   - TransparentFX
