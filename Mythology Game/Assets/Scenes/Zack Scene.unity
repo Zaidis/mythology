@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b0dc4fdc1bd134484c0caa508f0424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 312864553}
   tileSize: 8
   worldSizex: 30
   worldSizey: 30

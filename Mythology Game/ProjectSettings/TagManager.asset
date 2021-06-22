@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Intersection
+  - Enemy
+  - Ankh
+  - Djed
+  - Was
   layers:
   - Default
   - TransparentFX
