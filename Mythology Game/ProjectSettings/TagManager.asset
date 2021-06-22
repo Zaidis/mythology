@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Intersection
   - Enemy
+  - Ankh
   layers:
   - Default
   - TransparentFX

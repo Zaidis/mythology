@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     private void Start() {
         health = maxHealth;
     }
+    //delete this update method when done testing
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
             Damage(1);
@@ -31,11 +32,28 @@ public class PlayerManager : MonoBehaviour
     public int health { get; set; }
     public void Damage(int amount) {
         health -= amount;
+        if(health <= 0) {
+            //you died
+            print("You have died.");
+        }
         GameManager.instance.ChangeHealthBarUI();
     }
     public void Heal(int amount) {
         health += amount;
+        if(health > maxHealth) {
+            health = maxHealth;
+        }
         GameManager.instance.ChangeHealthBarUI();
     }
-    
+    public void IncreaseMaxHealth(int amount) {
+        maxHealth += amount;
+        GameManager.instance.ChangeHealthBarUI();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Ankh")) {
+            IncreaseMaxHealth(1);
+            Destroy(collision.gameObject);
+        }
+    }
 }

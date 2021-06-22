@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHealthBarUI() {
         int num = player.health;
-        print(num);
-        healthbar.fillAmount = (float)num / 10;
+        //print(num);
+        healthbar.fillAmount = (float)num / player.maxHealth;
         healthbarText.text = num + " / " + player.maxHealth;
     }
 }
