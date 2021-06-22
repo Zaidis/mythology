@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate() { 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        float speed = 3 + GameManager.instance.speed; //3 is default speed
+        float speed = 5 + GameManager.instance.speed; //3 is default speed
         rb.velocity = new Vector2(x * speed, y * speed);
     }
     private void OnTriggerEnter2D(Collider2D collision) {

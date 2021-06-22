@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start() {
         maxHealth = 5;
         health = maxHealth;
+        ChangeHealthBarUI();
     }
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void DamagePlayer(int amount) {
         health -= amount;
         if (health <= 0) {
+            health = 0;
             //you died
             print("You have died.");
         }
