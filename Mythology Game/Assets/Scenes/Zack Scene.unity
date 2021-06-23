@@ -415,7 +415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 312864553}
-  tileSize: 8
+  tileSizeX: 16
+  tileSizeY: 8
   worldSizex: 30
   worldSizey: 30
   newSquaresTravel: 20

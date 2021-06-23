@@ -26,12 +26,12 @@ namespace Nodies
             }
             parents[parentPos++] = p;
         }
-        public void AddNodalPosition(int x, int y, float tileWidth)
+        public void AddNodalPosition(int x, int y, float tileWidthX, float tileWidthY)
         {
             nodalPositionX = x;
-            playerX = positionX = x * tileWidth;
+            playerX = positionX = x * tileWidthX;
             nodalPositionY = y;
-            playerY = positionY = y * tileWidth;
+            playerY = positionY = y * tileWidthY;
         }
         public int GetParentPos()
         {

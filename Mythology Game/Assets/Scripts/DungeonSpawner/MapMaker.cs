@@ -12,7 +12,9 @@ public class MapMaker : MonoBehaviour
     [SerializeField]
     GameObject player;
     [SerializeField]
-    float tileSize = 16.5f;
+    float tileSizeX = 16.5f;
+    [SerializeField]
+    float tileSizeY = 16.5f;
     public int worldSizex = 30;
     public int worldSizey = 30;
     Node[,] grid;
@@ -306,7 +308,7 @@ public class MapMaker : MonoBehaviour
             }
             int room = Random.Range(0, bossRooms.Count - 1);
             Node bossNode = grid[worldSizex / 2, worldSizey / 2];
-            bossNode.AddNodalPosition(worldSizex / 2, worldSizey / 2, tileSize);
+            bossNode.AddNodalPosition(worldSizex / 2, worldSizey / 2, tileSizeX, tileSizeY);
             GameObject tmp = Instantiate(bossRooms[room], new Vector2(bossNode.positionX,bossNode.positionY), Quaternion.identity);
             nodalList.Add(bossNode);
         }
@@ -330,14 +332,14 @@ public class MapMaker : MonoBehaviour
             }
             Source.id = 0;
             grid[worldSizex / 2, worldSizey / 2] = Source;
-            grid[worldSizex / 2, worldSizey / 2].AddNodalPosition(worldSizex, worldSizey, tileSize);
+            grid[worldSizex / 2, worldSizey / 2].AddNodalPosition(worldSizex, worldSizey, tileSizeX, tileSizeY);
             path.Push(Source);
             startWalk();
         }
     }
     public float getWorldSize()
     {
-        return tileSize * worldSizey;
+        return tileSizeY * worldSizey * tileSizeX * worldSizex;
     }
     void startWalk()
     {
@@ -384,7 +386,7 @@ public class MapMaker : MonoBehaviour
             }
             currentPos.x += (int)dirToGo.x;
             currentPos.y += (int)dirToGo.y;
-            grid[currentPos.x, currentPos.y].AddNodalPosition(currentPos.x, currentPos.y, tileSize);
+            grid[currentPos.x, currentPos.y].AddNodalPosition(currentPos.x, currentPos.y, tileSizeX, tileSizeY);
             path.Peek().AddParent(grid[currentPos.x, currentPos.y]);
             grid[currentPos.x, currentPos.y].AddParent(path.Peek());
             path.Push(grid[currentPos.x, currentPos.y]);
@@ -398,9 +400,10 @@ public class MapMaker : MonoBehaviour
         }*/
         CreateMap(path);
     }
+    /*
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(new Vector2(transform.position.x + (worldSizey/2 *tileSize), transform.position.y + (worldSizey / 2 * tileSize)), new Vector2(worldSizex* tileSize,worldSizey * tileSize));
+        Gizmos.DrawWireCube(new Vector2(transform.position.x + (worldSizex/2 *tileSizeX), transform.position.y + (worldSizey / 2 * tileSizeY)), new Vector2(worldSizex* tileSizeX,worldSizey * tileSizeY));
         /*
         if (grid != null)
         {
@@ -410,8 +413,8 @@ public class MapMaker : MonoBehaviour
                 Gizmos.DrawCube(new Vector3(n.positionX - 3, n.positionY, 0), Vector3.one * (tileSize - .1f));
             }
         }
-        */
-    }
+        
+    }*/
     public List<Node> getNodeList()
     {
         return nodalList;
