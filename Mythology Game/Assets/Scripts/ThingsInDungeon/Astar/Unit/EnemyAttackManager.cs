@@ -26,7 +26,7 @@ public class EnemyAttackManager : MonoBehaviour
                 timer = 0;
                 print("hurt");
                 //target.GetComponent<PlayerHealthManager>().hurtPlayer(damage);
-                Instantiate(flameParticle, target.transform.position, Quaternion.identity);
+                //Instantiate(flameParticle, target.transform.position, Quaternion.identity);
             }
 
             //attack = false;

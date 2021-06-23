@@ -18,6 +18,7 @@ public class PathGrid : MonoBehaviour
     [SerializeField]
     LayerMask obstacle;
     public static int Xlen = 250; // being the rightmost X coordinate
+    public static int Ylen = 250;
     public static int IDcount = 0;
     public static GameObject player;
     public PathNode [] current_neighbors;
@@ -38,19 +39,20 @@ public class PathGrid : MonoBehaviour
     void Start()
     {
         nodeDiameter = 2 * nodeRadius;
-        Xlen = (int)MapMaker.mapThingy.getWorldSize();
+        Xlen = (int)MapMaker.mapThingy.getWorldSizeX();
+        Ylen = (int)MapMaker.mapThingy.getWorldSizeY();
         print(Xlen);
         // each node takes up 5x5 space so div the world size by 10 to create appropriate # of path node entries in the array
         player = GameObject.Find("Player");
-        ws = MapMaker.mapThingy.getWorldSize(); // world size is length of one side
+        ws = MapMaker.mapThingy.getWorldSizeX(); // world size is length of one side
         nodeXLength = (ws / Xlen); 
-        mstrGrid = new PathNode[Xlen, Xlen];
+        mstrGrid = new PathNode[Xlen, Ylen];
         
 
         for (int x = 0; x < Xlen ; x++)
         {
 
-            for (int y = 0; y < Xlen ; y++)
+            for (int y = 0; y < Ylen ; y++)
             {
                 Vector3 worldPoint = gameObject.transform.position + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 bool walkable = !(Physics2D.OverlapCircle(worldPoint,nodeRadius,obstacle));

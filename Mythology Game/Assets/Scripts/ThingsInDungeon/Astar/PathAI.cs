@@ -7,14 +7,14 @@ using UnityEngine;
 public class PathAI : MonoBehaviour
 {
 
-    Heap<PathNode> openSet;
+    List<PathNode> openSet = new List<PathNode>();
     List<PathNode> closedSet = new List<PathNode>();
     public static int [] prev; // Set by PathGrid .start() all to -1. Stores path node ID values
 
 
     private void Start()
     {
-        openSet = new Heap<PathNode>(MapMaker.mapThingy.worldSizex * MapMaker.mapThingy.worldSizey);
+       // openSet = new Heap<PathNode>(MapMaker.mapThingy.worldSizex * MapMaker.mapThingy.worldSizey);
     }
     public List<PathNode> Astar(PathNode source, PathNode target)
     {
@@ -35,8 +35,8 @@ public class PathAI : MonoBehaviour
         {
             // Find lowest fScore node
             // Set current equal to that
-            current = openSet.RemoveFirst();
-            /*
+            current = openSet[0];
+            
             for (int j = 0; j < openSet.Count; j++)
             {
                 if (current.fScore > openSet[j].fScore)
@@ -44,7 +44,7 @@ public class PathAI : MonoBehaviour
                     current = openSet[j];
                 }
             }
-            */
+            
             closedSet.Add(current);
 
             // Upon finding the target...
