@@ -23,7 +23,8 @@ public class ScarabAI : MonoBehaviour
 
         child = this.transform.GetChild(0).gameObject;
         otherChild = this.transform.GetChild(1).gameObject;
-        Physics2D.IgnoreLayerCollision(0, 8);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>() ,GameManager.instance.player.GetComponent<Collider2D>());
+        
     }
     private void FixedUpdate() {
         transform.position = Vector3.MoveTowards(transform.position, child.transform.position, speed * Time.deltaTime);
