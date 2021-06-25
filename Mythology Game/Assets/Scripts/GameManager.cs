@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start() {
         maxHealth = 5;
         health = maxHealth;
+        attackSpeed = 3;
         ChangeHealthBarUI();
     }
     public void Update() {
