@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         health = maxHealth;
         attackSpeed = 7;
         ChangeHealthBarUI();
+        boltColor = new Color32(255, 255, 255, 255);
     }
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {

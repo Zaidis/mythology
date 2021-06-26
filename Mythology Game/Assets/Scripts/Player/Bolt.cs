@@ -16,6 +16,7 @@ public class Bolt : MonoBehaviour
     private void Awake() {
         player = GameManager.instance.player;
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        this.GetComponent<SpriteRenderer>().color = GameManager.instance.boltColor;
     }
 
     private void Start() {

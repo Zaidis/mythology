@@ -63,6 +63,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Blue Lotus")) {
             GameManager.instance.boltSize += 1;
+            GameManager.instance.boltColor = new Color32(0, 150, 200, 255);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Feather")) {
             GameManager.instance.speed += 1;
