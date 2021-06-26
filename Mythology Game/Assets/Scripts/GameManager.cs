@@ -19,7 +19,15 @@ public class GameManager : MonoBehaviour
     public int keyCount { get; set; }
     public int boltSize { get; set; }
     public Color32 boltColor { get; set; }
-    
+
+    public Image damageBox;
+    public Image attSpeedBox;
+    public Image boltSizeBox;
+    public Image moveSpeedBox;
+    public Image maxHealthBox;
+    public TextMeshProUGUI keyCounter;
+
+    public List<Image> itemImages = new List<Image>();
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -37,23 +45,42 @@ public class GameManager : MonoBehaviour
     private void Start() {
         maxHealth = 5;
         health = maxHealth;
-        attackSpeed = 7;
+        damage = 1;
+        attackSpeed = 2;
+        speed = 3;
+        boltSize = 2;
         ChangeHealthBarUI();
         boltColor = new Color32(255, 255, 255, 255);
+        SettingsStats();
     }
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
             DamagePlayer(1);
         } else if (Input.GetKeyDown(KeyCode.Y)) {
             HealPlayer(1);
+        } else if (Input.GetKeyDown(KeyCode.U)) {
+            keyCount++;
+            ChangeHealthBarUI();
         }
     }
+
+    /// <summary>
+    /// Affects the UI stats. 
+    /// </summary>
+    public void SettingsStats() {
+        damageBox.fillAmount = (float)damage / 8;
+        attSpeedBox.fillAmount = (float)attackSpeed / 8;
+        boltSizeBox.fillAmount = (float)boltSize / 8;
+        moveSpeedBox.fillAmount = (float)speed / 8;
+        maxHealthBox.fillAmount = (float)maxHealth / 8;
+    }
+
     /// <summary>
     /// This function makes sure all stats do not go below their default values. 
     /// </summary>
     public void CheckStats() {
-        if(speed < 1) {
-            speed = 1;
+        if(speed < 2) {
+            speed = 2;
         }
         if(damage < 1) {
             damage = 1;
@@ -63,6 +90,9 @@ public class GameManager : MonoBehaviour
         }
         if(maxHealth < 1) {
             maxHealth = 1;
+        }
+        if(boltSize < 1) {
+            boltSize = 1;
         }
     }
     public void PrintStats() {
@@ -77,6 +107,7 @@ public class GameManager : MonoBehaviour
         //print(num);
         healthbar.fillAmount = (float)num / maxHealth;
         healthbarText.text = num + " / " + maxHealth;
+        keyCounter.text = keyCount.ToString();
     }
 
     public void IncreaseMaxHealth(int amount) {
@@ -98,5 +129,12 @@ public class GameManager : MonoBehaviour
             print("You have died.");
         }
         ChangeHealthBarUI();
+    }
+
+    public void AddItemToUI(Sprite item) {
+        Image img = itemImages[0];
+        img.sprite = item;
+        img.color = new Color32(255, 255, 255, 255);
+        itemImages.RemoveAt(0);
     }
 }

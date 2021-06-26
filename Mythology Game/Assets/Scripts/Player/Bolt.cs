@@ -17,6 +17,7 @@ public class Bolt : MonoBehaviour
         player = GameManager.instance.player;
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         this.GetComponent<SpriteRenderer>().color = GameManager.instance.boltColor;
+        this.transform.localScale = new Vector3(GameManager.instance.boltSize, GameManager.instance.boltSize, 0);
     }
 
     private void Start() {

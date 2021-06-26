@@ -18,6 +18,10 @@ public class Chest : MonoBehaviour
                 if(GameManager.instance.keyCount <= 0) {
                     //you have dont have a key
                     return;
+                } else {
+                    //you do have a key
+                    GameManager.instance.keyCount--;
+                    GameManager.instance.ChangeHealthBarUI();
                 }
             }
             //open chest
