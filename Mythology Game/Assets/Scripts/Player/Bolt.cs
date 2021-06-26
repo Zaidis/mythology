@@ -30,6 +30,9 @@ public class Bolt : MonoBehaviour
         } else if (player.GetComponent<Combat>().shootRight) {
             moveRight = true;
         }
+        if (moveUp) {
+            this.GetComponent<SpriteRenderer>().sortingOrder = 4;
+        }
         x = player.rb.velocity.x;
         y = player.rb.velocity.y;
     }

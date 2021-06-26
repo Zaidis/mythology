@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    public Animator an;
     private void Awake() {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        an = this.gameObject.GetComponent<Animator>();
     }
     //delete this update method when done testing
     
@@ -15,6 +16,14 @@ public class PlayerManager : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         float speed = GameManager.instance.speed; //3 is default speed
+        if(x != 0 || y != 0) {
+            an.SetBool("moving", true);
+            an.SetFloat("X", x);
+            an.SetFloat("Y", y);
+        } else {
+            an.SetBool("moving", false);
+        }
+        
         rb.velocity = new Vector2(x * speed, y * speed);
     }
     private void OnTriggerEnter2D(Collider2D collision) {

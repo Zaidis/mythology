@@ -12,6 +12,8 @@ public class Combat : MonoBehaviour
     public bool shootDown;
     public bool shootLeft;
     public bool shootRight;
+
+    public Transform shootLocation;
     //Combat Manager
     private void Update() {
         shootingTimer -= Time.deltaTime;
@@ -69,7 +71,7 @@ public class Combat : MonoBehaviour
     }
     public void ShootBolt() {
 
-        Instantiate(bolt, transform.position, Quaternion.identity);
+        Instantiate(bolt, shootLocation.position, Quaternion.identity);
         canShoot = false;
         shootingTimer = (2 / (float)GameManager.instance.attackSpeed);
     }

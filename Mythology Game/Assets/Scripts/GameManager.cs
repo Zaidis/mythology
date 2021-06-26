@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI keyCounter;
 
     public List<Image> itemImages = new List<Image>();
+    public GameObject settingsMenu;
+    public bool inSettings;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -61,6 +63,18 @@ public class GameManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.U)) {
             keyCount++;
             ChangeHealthBarUI();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            //go to settings menu
+            if (inSettings == false) {
+                settingsMenu.SetActive(true);
+                inSettings = true;
+                Time.timeScale = 0;
+            } else {
+                settingsMenu.SetActive(false);
+                inSettings = false;
+                Time.timeScale = 1;
+            }
         }
     }
 
