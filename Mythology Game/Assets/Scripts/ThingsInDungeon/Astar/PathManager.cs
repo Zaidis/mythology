@@ -35,7 +35,6 @@ public class PathManager : MonoBehaviour
     public static void RequestPath(PathRequest request)
     {
         ThreadStart threadStart = delegate {
-            print(instance);
             instance.pathfinding.Astar(PathGrid.mstrGrid[(int)request.pathStart.x, (int)request.pathStart.y], PathGrid.mstrGrid[(int)request.pathEnd.x,(int) request.pathEnd.y]);
         };
         threadStart.Invoke();

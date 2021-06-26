@@ -9,6 +9,7 @@ TagManager:
   - Ankh
   - Djed
   - Was
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,11 +19,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Wall
+  - Chest
+  - Item
+  - Bug
   - 
   - 
   - 

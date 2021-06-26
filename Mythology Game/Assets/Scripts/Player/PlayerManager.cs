@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private void Awake() {
         rb = this.gameObject.GetComponent<Rigidbody2D>();

@@ -6,8 +6,8 @@ public class EnemyHealthManager : MonoBehaviour
 {
     public int enemyMaxHealth;
     public int enemyCurrentHealth;
-    //public GameObject DeathParticle;
-    //public GameObject attackedParticle;
+    public GameObject DeathParticle;
+    public GameObject attackedParticle;
     public GameObject heartDrop;
 
     public bool left = true;
@@ -30,7 +30,7 @@ public class EnemyHealthManager : MonoBehaviour
     {
         if (enemyCurrentHealth <= 0)
         {
-            //Instantiate(DeathParticle, transform.position, Quaternion.identity);
+            Instantiate(DeathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
             dropChance = Random.Range(0, 3);
