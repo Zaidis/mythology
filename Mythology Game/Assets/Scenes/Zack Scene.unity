@@ -150,11 +150,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 65732063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3041c247dd8654489dac1db89eb4de, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a343761e8d535a4492f7a12c0660214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1836256174}
-  speed: 8.74
 --- !u!212 &65732065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -478,9 +477,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1096172983}
+  - component: {fileID: 1096172984}
   - component: {fileID: 1096172982}
   - component: {fileID: 1096172981}
-  - component: {fileID: 1096172984}
   m_Layer: 0
   m_Name: Astar
   m_TagString: Untagged
@@ -497,7 +496,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096172980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85a0e6acd0d14e0997ae64d378fad36, type: 3}
+  m_Script: {fileID: 11500000, guid: 92b1d19a85a4d254faaa1e7f27a50fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1096172982
@@ -509,7 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096172980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8655bff05067aa24d991bbce1b62c29f, type: 3}
+  m_Script: {fileID: 11500000, guid: 13b472e4ba6d0664bad458100aa4842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1096172983
@@ -535,22 +534,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096172980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0194f36aee36b3247a061b8e2c941678, type: 3}
+  m_Script: {fileID: 11500000, guid: 523e63cd5bdb33e46be982fb6fc7b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbor_N: {x: 0, y: 0}
-  neighbor_E: {x: 0, y: 0}
-  neighbor_S: {x: 0, y: 0}
-  neighbor_W: {x: 0, y: 0}
-  nodeRadius: 0.1
+  displayGridGizmos: 0
   obstacle:
     serializedVersion: 2
-    m_Bits: 0
-  nodeXLength: 0
-  current_neighbors_len: 0
-  Xidx: 0
-  Yidx: 0
-  showGizmos: 0
+    m_Bits: 512
+  gridWorldSize: {x: 1000, y: 1000}
+  nodeRadius: 0.5
 --- !u!1 &1836256172
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +554,7 @@ GameObject:
   - component: {fileID: 1836256174}
   - component: {fileID: 1836256173}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
