@@ -17,7 +17,8 @@ public class PathGrid : MonoBehaviour
     float nodeDiameter;
     [SerializeField]
     LayerMask obstacle;
-    public static int Xlen = 250; // being the rightmost X coordinate
+    public static int Xlen { get; set; } 
+    public static int Ylen { get; set; }
     public static int IDcount = 0;
     public static GameObject player;
     public PathNode [] current_neighbors;
@@ -27,7 +28,7 @@ public class PathGrid : MonoBehaviour
     public int current_neighbors_len;
     public int Xidx;
     public int Yidx;
-
+    
     public PathNode node;
     public static PathNode[,] mstrGrid;
     [SerializeField]
@@ -38,27 +39,28 @@ public class PathGrid : MonoBehaviour
     void Start()
     {
         nodeDiameter = 2 * nodeRadius;
-        Xlen = (int)MapMaker.mapThingy.getWorldSize();
+        Xlen = (int)MapMaker.mapThingy.getWorldSizeX();
         print(Xlen);
         // each node takes up 5x5 space so div the world size by 10 to create appropriate # of path node entries in the array
         player = GameObject.Find("Player");
 
         ws = MapMaker.mapThingy.getWorldSizeX(); // world size is length of one side
         nodeXLength = (ws / Xlen);
-        Xlen *= 2;
-        Ylen *= 2;
-        mstrGrid = new PathNode[Xlen , Ylen];
+        mstrGrid = new PathNode[Xlen*2 , Ylen*2];
 
         
 
         for (int x = 0; x < Xlen ; x++)
         {
 
-            for (int y = 0; y < Xlen ; y++)
+            for (int y = 0; y < Ylen ; y++)
             {
                 Vector3 worldPoint = gameObject.transform.position + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 bool walkable = !(Physics2D.OverlapCircle(worldPoint,nodeRadius,obstacle));
-                mstrGrid[x, y] = new PathNode(new Vector2Int(x,y), nodeXLength,walkable, IDcount );
+                mstrGrid[x, y] = new PathNode(new Vector2Int(x, y), nodeXLength, walkable, IDcount);
+
+                print(x + " " + y);
+                
                 IDcount++;
             }
         }

@@ -337,9 +337,13 @@ public class MapMaker : MonoBehaviour
             startWalk();
         }
     }
-    public float getWorldSize()
+    public float getWorldSizeX()
     {
-        return tileSizeY * worldSizey * tileSizeX * worldSizex;
+        return tileSizeX * worldSizex;
+    }
+    public float getWorldSizeY()
+    {
+        return tileSizeY * worldSizey;
     }
     void startWalk()
     {
