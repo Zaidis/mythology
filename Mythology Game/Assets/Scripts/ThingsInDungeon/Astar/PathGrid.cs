@@ -42,9 +42,13 @@ public class PathGrid : MonoBehaviour
         print(Xlen);
         // each node takes up 5x5 space so div the world size by 10 to create appropriate # of path node entries in the array
         player = GameObject.Find("Player");
-        ws = MapMaker.mapThingy.getWorldSize(); // world size is length of one side
-        nodeXLength = (ws / Xlen); 
-        mstrGrid = new PathNode[Xlen, Xlen];
+
+        ws = MapMaker.mapThingy.getWorldSizeX(); // world size is length of one side
+        nodeXLength = (ws / Xlen);
+        Xlen *= 2;
+        Ylen *= 2;
+        mstrGrid = new PathNode[Xlen , Ylen];
+
         
 
         for (int x = 0; x < Xlen ; x++)
