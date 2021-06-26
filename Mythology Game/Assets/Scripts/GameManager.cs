@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int damage { get; set; }
     public int attackSpeed { get; set; }
     public int  maxHealth { get; set; }
-
+    public int keyCount { get; set; }
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -25,11 +25,16 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         player = FindObjectOfType<PlayerManager>();
+
+        Physics2D.IgnoreLayerCollision(10, 11);
+        Physics2D.IgnoreLayerCollision(11, 12);
+        Physics2D.IgnoreLayerCollision(11, 11);
+       
     }
     private void Start() {
         maxHealth = 5;
         health = maxHealth;
-        attackSpeed = 3;
+        attackSpeed = 7;
         ChangeHealthBarUI();
     }
     public void Update() {
