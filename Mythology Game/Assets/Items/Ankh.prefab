@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5996648055104239225}
   - component: {fileID: 7934834857330213954}
   - component: {fileID: 6911880542223494346}
+  - component: {fileID: -421568921460855597}
   m_Layer: 11
   m_Name: Ankh
   m_TagString: Ankh
@@ -158,3 +159,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1039753, y: 1.0946205}
   m_EdgeRadius: 0
+--- !u!114 &-421568921460855597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996648055104239226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9322584a37d6e144acd94ef20c210b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Ankh

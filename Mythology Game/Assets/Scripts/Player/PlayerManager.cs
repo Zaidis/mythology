@@ -30,7 +30,96 @@ public class PlayerManager : MonoBehaviour
             //INCREASE DAMAGE
             GameManager.instance.damage += 1;
             Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Jar")) {
+            GameManager.instance.IncreaseMaxHealth(1);
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Black Lotus")) {
+            GameManager.instance.attackSpeed += 1;
+            GameManager.instance.boltColor = new Color32(0, 0, 0, 255);
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Crook")) {
+            GameManager.instance.damage += 1;
+            GameManager.instance.speed -= 1;
+            if (ItemDatabase.instance.CheckIfUsed("Flail")) {
+                //you have the flail as well
+                GameManager.instance.boltColor = new Color32(255, 0, 0, 255);
+                GameManager.instance.IncreaseMaxHealth(1);
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Flail")) {
+            GameManager.instance.damage += 1;
+            GameManager.instance.speed -= 1;
+            if (ItemDatabase.instance.CheckIfUsed("Crook")) {
+                //you have the flail as well
+                GameManager.instance.boltColor = new Color32(255, 0, 0, 255);
+                GameManager.instance.IncreaseMaxHealth(1);
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Papyrus")) {
+            GameManager.instance.boltSize += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Mummy Hand")) {
+            GameManager.instance.attackSpeed += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Blue Lotus")) {
+            GameManager.instance.boltSize += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Feather")) {
+            GameManager.instance.speed += 1;
+            if (ItemDatabase.instance.CheckIfUsed("Heart")) {
+                GameManager.instance.health = GameManager.instance.maxHealth;
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Heart")) {
+            GameManager.instance.IncreaseMaxHealth(1);
+            if (ItemDatabase.instance.CheckIfUsed("Feather")) {
+                GameManager.instance.health = GameManager.instance.maxHealth;
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Scribe")) {
+            GameManager.instance.boltSize += 1;
+            GameManager.instance.attackSpeed -= 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Eye")) {
+            GameManager.instance.damage += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Cat Fangs")) {
+
+        } else if (collision.gameObject.CompareTag("Sun Disk")) {
+            GameManager.instance.damage += 1;
+            GameManager.instance.maxHealth -= 1;
+            GameManager.instance.ChangeHealthBarUI();
+            if(GameManager.instance.health > GameManager.instance.maxHealth) {
+                GameManager.instance.health = GameManager.instance.maxHealth;
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Book")) {
+            GameManager.instance.attackSpeed += 1;
+            GameManager.instance.maxHealth -= 1;
+            GameManager.instance.ChangeHealthBarUI();
+            if (GameManager.instance.health > GameManager.instance.maxHealth) {
+                GameManager.instance.health = GameManager.instance.maxHealth;
+            }
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Lapis")) {
+            GameManager.instance.speed += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Turquoise")) {
+            GameManager.instance.boltSize += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Mallet")) {
+            GameManager.instance.damage += 1;
+            GameManager.instance.attackSpeed -= 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Cow Horns")) {
+            GameManager.instance.damage -= 1;
+            GameManager.instance.attackSpeed += 1;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Beer")) {
+            GameManager.instance.speed += 1;
+            Destroy(collision.gameObject);
         }
+        GameManager.instance.CheckStats();
         GameManager.instance.ChangeHealthBarUI();
         GameManager.instance.PrintStats();
     }

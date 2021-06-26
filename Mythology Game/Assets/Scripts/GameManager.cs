@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int attackSpeed { get; set; }
     public int  maxHealth { get; set; }
     public int keyCount { get; set; }
+    public int boltSize { get; set; }
+    public Color32 boltColor { get; set; }
+    
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -44,7 +47,23 @@ public class GameManager : MonoBehaviour
             HealPlayer(1);
         }
     }
-
+    /// <summary>
+    /// This function makes sure all stats do not go below their default values. 
+    /// </summary>
+    public void CheckStats() {
+        if(speed < 1) {
+            speed = 1;
+        }
+        if(damage < 1) {
+            damage = 1;
+        }
+        if(attackSpeed < 1) {
+            attackSpeed = 1;
+        }
+        if(maxHealth < 1) {
+            maxHealth = 1;
+        }
+    }
     public void PrintStats() {
         print("HEALTH: " + health);
         print("MAX HEALTH: " + maxHealth);

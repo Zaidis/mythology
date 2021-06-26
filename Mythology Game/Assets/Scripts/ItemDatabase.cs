@@ -27,9 +27,9 @@ public class ItemDatabase : MonoBehaviour
         items.RemoveAt(rand);
         return item;
     }
-    public bool CheckIfUsed(GameObject obj) {
+    public bool CheckIfUsed(string name) {
         foreach(GameObject o in usedItems) {
-            if(obj == o) {
+            if(name == o.GetComponent<Item>().name) {
                 return true;
             }
         }
