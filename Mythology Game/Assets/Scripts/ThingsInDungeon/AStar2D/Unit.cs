@@ -11,11 +11,18 @@ public class Unit : MonoBehaviour
 
 	private void Start()
 	{
-		
+		target = null;
 	}
 	private void Update()
 	{
-		PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+		if (target == null)
+		{
+			StopAllCoroutines();
+		}
+		if(target != null)
+		{
+			PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+		}
 	}
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
 	{
@@ -47,7 +54,7 @@ public class Unit : MonoBehaviour
 			yield return null;
 
 		}
-	}
+	}/*
 	public void OnDrawGizmos()
 	{
 		if(path!= null)
@@ -67,5 +74,5 @@ public class Unit : MonoBehaviour
 				}
 			}
 		}
-	}
+	}*/
 }
