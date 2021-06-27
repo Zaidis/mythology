@@ -13,9 +13,12 @@ public class Stairs : MonoBehaviour
     bool trans = false;
     float timer = 2f;
     public GameObject tooltip;
+    GameObject Astar;
     private void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        Astar = GameObject.Find("Astar");
+        Astar.SetActive(true);
+        //canvas = GameObject.FindGameObjectWithTag("Canvas");
        // transitioner = canvas.GetComponentInChildren<canvasTransition>();
         tooltip.SetActive(false);
     }
