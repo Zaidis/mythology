@@ -147,7 +147,7 @@ public class GenericMelee : MonoBehaviour
                 anim.Play(SideAttack);
                 GameManager.instance.DamagePlayer(damage);
                 print("I did it");
-
+                attacking = false;
             }
         }
         else
