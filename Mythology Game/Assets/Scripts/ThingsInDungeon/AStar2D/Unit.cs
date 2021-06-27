@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Unit : MonoBehaviour
 {
 	public Transform target;
+	[SerializeField]
 	float speed = 5;
 	Vector3[] path;
 	int targetIndex;
@@ -21,7 +23,14 @@ public class Unit : MonoBehaviour
 		}
 		if(target != null)
 		{
-			PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+			try
+			{
+				PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+			}
+			catch(Exception e)
+            {
+				StopAllCoroutines();
+            }
 		}
 	}
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -30,7 +39,14 @@ public class Unit : MonoBehaviour
 		{
 			path = newPath;
 			targetIndex = 0;
-			StopCoroutine("FollowPath");
+			try
+			{
+				StopCoroutine("FollowPath");
+			}
+			catch (Exception e)
+			{
+				StopAllCoroutines();
+			}			
 			StartCoroutine("FollowPath");
 		}
 	}
