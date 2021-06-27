@@ -100,11 +100,18 @@ public class GameManager : MonoBehaviour
         }
 
         int rand;
+        int rand2;
         do {
             rand = Random.Range(0, maker.middleSections.Count);
         } while (rand == startingRoomNum);
 
+        do {
+            rand2 = Random.Range(0, maker.middleSections.Count);
+        } while (rand2 == startingRoomNum || rand2 == rand);
+
+
         GameObject obj = Instantiate(chest, maker.middleSections[rand].transform.position, Quaternion.identity);
+        GameObject obj2 = Instantiate(chest, maker.middleSections[rand2].transform.position, Quaternion.identity);
 
         maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(0).GetComponent<Tilemap>().color = Color.red;
         maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(1).GetComponent<Tilemap>().color = Color.red;
