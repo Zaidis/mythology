@@ -93,15 +93,19 @@ public class GenericMelee : MonoBehaviour
             
         }
     }
+    void monsterAgro()
+    {
+        Agro = true;
+        I_Approach = true;
+        I_Attack = false;
+        I_Idle = false;
+        I_Wander = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Agro = true;
-            I_Approach = true;
-            I_Attack = false;
-            I_Idle = false;
-            I_Wander = false;
+            monsterAgro();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
