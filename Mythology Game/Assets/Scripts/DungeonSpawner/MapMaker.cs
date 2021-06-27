@@ -24,6 +24,8 @@ public class MapMaker : MonoBehaviour
     int newSquaresTravel = 30;
     [SerializeField]
     bool getPieces = false;
+    [SerializeField]
+    GameObject stairs;
 
     [Header("Middle sections of maps")]
     public List<GameObject> middleSections = new List<GameObject>();
@@ -340,6 +342,7 @@ public class MapMaker : MonoBehaviour
             path.Push(Source);
             startWalk();
         }
+        Instantiate(stairs, middleSections[middleSections.Count - 1].transform.position, Quaternion.identity);
     }
     public float getWorldSizeX()
     {

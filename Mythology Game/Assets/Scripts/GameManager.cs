@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -188,6 +189,8 @@ public class GameManager : MonoBehaviour
             health = 0;
             //you died
             print("You have died.");
+            SceneManager.LoadScene(SceneManager.GetSceneByName("Menu").buildIndex);
+            
         }
         ChangeHealthBarUI();
     }
