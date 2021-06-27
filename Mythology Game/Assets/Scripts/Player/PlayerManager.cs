@@ -1,17 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class PlayerManager : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator an;
+    public CinemachineVirtualCamera cam;
     private void Awake() {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         an = this.gameObject.GetComponent<Animator>();
+        cam = FindObjectOfType<CinemachineVirtualCamera>();
+    }
+
+    private void Start() {
+        MapMaker maker = FindObjectOfType<MapMaker>();
+        int rand = Random.Range(0, maker.middleSections.Count);
+        this.transform.position = maker.middleSections[rand].transform.position;
+        cam.LookAt = maker.middleSections[rand].gameObject.transform;
+        cam.Follow = maker.middleSections[rand].gameObject.transform;
+        cam.LookAt = null;
+
     }
     //delete this update method when done testing
-    
+
     private void FixedUpdate() { 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");

@@ -24,6 +24,10 @@ public class MapMaker : MonoBehaviour
     int newSquaresTravel = 30;
     [SerializeField]
     bool getPieces = false;
+
+    [Header("Middle sections of maps")]
+    public List<GameObject> middleSections = new List<GameObject>();
+    [Header("ROOM ARRAYS")]
     //Zero rooms will have clear centers
     [SerializeField]
     List<GameObject> upRooms;
@@ -487,23 +491,28 @@ public class MapMaker : MonoBehaviour
             {
 
                 //intersection
-                if (path.Count >1)
-                Instantiate(intersection[Random.Range(0, intersection.Count -1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(intersection[intersection.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(intersection[Random.Range(0, intersection.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(intersection[intersection.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && left && up && !down)
             {
                 //right left up
-                if(path.Count > 1)
+                if(path.Count > 1) {
+                    GameObject map = Instantiate(leftRightUpRooms[Random.Range(0, leftRightUpRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                }
                 
-                Instantiate(leftRightUpRooms[Random.Range(0, leftRightUpRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                
                 else
                 {
-                    Instantiate(leftRightUpRooms[leftRightUpRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    GameObject map = Instantiate(leftRightUpRooms[leftRightUpRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
 
@@ -511,143 +520,168 @@ public class MapMaker : MonoBehaviour
             else if (!right && left && !up && down)
             {
                 //right left up
-                if(path.Count > 1)
-                Instantiate(downLeftRooms[Random.Range(0, leftRightUpRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if(path.Count > 1) {
+                    GameObject map = Instantiate(downLeftRooms[Random.Range(0, leftRightUpRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                }
+                
                 else
                 {
-                    Instantiate(downLeftRooms[leftRightUpRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    GameObject map = Instantiate (downLeftRooms[leftRightUpRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && left && !up && down)
             {
                 //right left down
-                if(path.Count > 1)
-                Instantiate(leftRightDownRooms[Random.Range(0, leftRightDownRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if(path.Count > 1) {
+                    GameObject map = Instantiate(leftRightDownRooms[Random.Range(0, leftRightDownRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                }
+                
                 else
                 {
-                    Instantiate(leftRightDownRooms[leftRightDownRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    GameObject map = Instantiate(leftRightDownRooms[leftRightDownRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && !left && up && down)
             {
                 //right up down
-                if(path.Count > 1)
-                Instantiate(upRightDown[Random.Range(0, upRightDown.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(upRightDown[upRightDown.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(upRightDown[Random.Range(0, upRightDown.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(upRightDown[upRightDown.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
                 
             }
             else if (!right && left && up && down)
             {
                 //left up down
-                if(path.Count > 1)
-                Instantiate(upLeftDown[Random.Range(0, upLeftDown.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if(path.Count > 1) {
+                    GameObject map = Instantiate(upLeftDown[Random.Range(0, upLeftDown.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                }
+                
                 else
                 {
-                    Instantiate(upLeftDown[upLeftDown.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    GameObject map = Instantiate(upLeftDown[upLeftDown.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && left && !up && !down)
             {
                 //right left
-                if(path.Count > 1)
-                Instantiate(leftRightRooms[Random.Range(0, leftRightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if(path.Count > 1) {
+                    GameObject map = Instantiate(leftRightRooms[Random.Range(0, leftRightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                }
+                
                 else
                 {
-                    Instantiate(leftRightRooms[leftRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    GameObject map = Instantiate(leftRightRooms[leftRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && !left && !up && down)
             {
                 //right down
-                if(path.Count > 1)
-                Instantiate(downRightRooms[Random.Range(0, downRightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(downRightRooms[downRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(downRightRooms[Random.Range(0, downRightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(downRightRooms[downRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && !left && up && !down)
             {
                 //right up
-                if(path.Count > 1)
-                Instantiate(upRightRooms[Random.Range(0, upRightRooms.Count -1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(upRightRooms[upRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(upRightRooms[Random.Range(0, upRightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(upRightRooms[upRightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (!right && left && up && !down)
             {
                 //up left
-                if(path.Count > 1)
-                Instantiate(upLeftRooms[Random.Range(0, upLeftRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(upLeftRooms[upLeftRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(upLeftRooms[Random.Range(0, upLeftRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(upLeftRooms[upLeftRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (!right && !left && up && down)
             {
                 //up down
-                if(path.Count > 1)
-                Instantiate(upDownRooms[Random.Range(0, upDownRooms.Count- 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(upDownRooms[upDownRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(upDownRooms[Random.Range(0, upDownRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate (upDownRooms[upDownRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (right && !left && !up && !down)
             {
                 //right
-                if(path.Count > 1)
-                Instantiate(rightRooms[Random.Range(0, rightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else 
-                {
-                    Instantiate(rightRooms[rightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(rightRooms[Random.Range(0, rightRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(rightRooms[rightRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (!right && !left && !up && down)
             {
                 //down
-                if(path.Count >1)
-                Instantiate(downRooms[Random.Range(0, downRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(downRooms[downRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(downRooms[Random.Range(0, downRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(downRooms[downRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (!right && left && !up && !down)
             {
                 //left
-                if(path.Count > 1)
-                Instantiate(leftRooms[Random.Range(0, leftRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(leftRooms[leftRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(leftRooms[Random.Range(0, leftRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(leftRooms[leftRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }
             else if (!right && !left && up && !down)
             {
                 //up
-                if(path.Count > 1)
-                Instantiate(upRooms[Random.Range(0, upRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
-                else
-                {
-                    Instantiate(upRooms[upRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                if (path.Count > 1) {
+                    GameObject map = Instantiate(upRooms[Random.Range(0, upRooms.Count - 1)], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
+                } else {
+                    GameObject map = Instantiate(upRooms[upRooms.Count - 1], new Vector2(tmp.positionX, tmp.positionY), Quaternion.identity);
+                    middleSections.Add(map.transform.GetChild(2).gameObject);
                 }
 
             }

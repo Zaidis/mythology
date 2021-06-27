@@ -18,10 +18,6 @@ public class EnemyBolt : MonoBehaviour
         location = player.transform.position;
         this.transform.localScale = new Vector2(boltSize, boltSize);
     }
-    private void FixedUpdate() {
-        //this.transform.position += location * speed * Time.deltaTime;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Wall")) {
             Destroy(this.gameObject);
