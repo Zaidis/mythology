@@ -93,6 +93,9 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < maker.middleSections.Count; i++) { //will handle enemy spawns 
             if(maker.middleSections[i] == startingRoom) {
                 startingRoomDec.transform.position = startingRoom.transform.position;
+            } else {
+                //spawn enemies
+                maker.middleSections[i].transform.parent.GetComponent<E_Spawn>().SpawnEnemies();
             }
         }
 
