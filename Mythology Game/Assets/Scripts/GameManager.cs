@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.Tilemaps;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -33,6 +34,13 @@ public class GameManager : MonoBehaviour
     public bool inSettings;
     [Header("Pick up UI")]
     public TextMeshProUGUI pickUpText;
+
+    [Header("Starting Room Location")]
+    public GameObject startingRoom;
+    public GameObject startingRoomDec; //shows the wasd and arrow keys
+    public int startingRoomNum;
+    [Header("Chest Prefab")]
+    public GameObject chest;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -44,8 +52,7 @@ public class GameManager : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(10, 11);
         Physics2D.IgnoreLayerCollision(11, 12);
-        Physics2D.IgnoreLayerCollision(11, 11);
-       
+        Physics2D.IgnoreLayerCollision(11, 11); 
     }
     private void Start() {
         maxHealth = 5;
@@ -79,6 +86,25 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+    }
+
+    public void RoomSet() {
+        MapMaker maker = FindObjectOfType<MapMaker>();
+        for (int i = 0; i < maker.middleSections.Count; i++) { //will handle enemy spawns 
+            if(maker.middleSections[i] == startingRoom) {
+                startingRoomDec.transform.position = startingRoom.transform.position;
+            }
+        }
+
+        int rand;
+        do {
+            rand = Random.Range(0, maker.middleSections.Count);
+        } while (rand == startingRoomNum);
+
+        GameObject obj = Instantiate(chest, maker.middleSections[rand].transform.position, Quaternion.identity);
+
+        maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(0).GetComponent<Tilemap>().color = Color.red;
+        maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(1).GetComponent<Tilemap>().color = Color.red;
     }
 
     /// <summary>

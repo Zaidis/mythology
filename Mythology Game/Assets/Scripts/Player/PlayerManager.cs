@@ -15,12 +15,14 @@ public class PlayerManager : MonoBehaviour
 
     private void Start() {
         MapMaker maker = FindObjectOfType<MapMaker>();
-        int rand = Random.Range(0, maker.middleSections.Count);
+        int rand = maker.middleSections.Count / 2;
         this.transform.position = maker.middleSections[rand].transform.position;
         cam.LookAt = maker.middleSections[rand].gameObject.transform;
         cam.Follow = maker.middleSections[rand].gameObject.transform;
         cam.LookAt = null;
-
+        GameManager.instance.startingRoom = maker.middleSections[rand].gameObject; //gives the game manager the starting room
+        GameManager.instance.startingRoomNum = rand;
+        GameManager.instance.RoomSet();
     }
     //delete this update method when done testing
 
