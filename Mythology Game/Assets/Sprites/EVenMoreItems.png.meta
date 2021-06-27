@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 336763b8a8e2649ec9af85d2aa04306b
+guid: b767e143c97f7dc4388e803158fe508e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1887494081247492234
-    second: Rocks_0
+      213: 6301158413851483982
+    second: EVenMoreItems_0
   - first:
-      213: 2007986136508003152
-    second: Rocks_1
+      213: -7993667266625676519
+    second: EVenMoreItems_1
   - first:
-      213: -5091828049805951605
-    second: Rocks_2
+      213: 3370708090568319062
+    second: EVenMoreItems_2
+  - first:
+      213: 2994909467598468135
+    second: EVenMoreItems_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -57,7 +60,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -98,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rocks_0
+      name: EVenMoreItems_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 180
-        width: 150
-        height: 120
+        y: 160
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +115,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a88b864ddd9b13a10800000000000000
-      internalID: 1887494081247492234
+      spriteID: e4fd4134136327750800000000000000
+      internalID: 6301158413851483982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rocks_1
+      name: EVenMoreItems_1
       rect:
         serializedVersion: 2
         x: 180
         y: 170
-        width: 110
-        height: 100
+        width: 120
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 053f77c90cccddb10800000000000000
-      internalID: 2007986136508003152
+      spriteID: 91bdb1829f9c01190800000000000000
+      internalID: -7993667266625676519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rocks_2
+      name: EVenMoreItems_2
       rect:
         serializedVersion: 2
-        x: 30
-        y: 20
-        width: 150
-        height: 100
+        x: 0
+        y: 0
+        width: 160
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8d32f9cd513659b0800000000000000
-      internalID: -5091828049805951605
+      spriteID: 6502cdb462927ce20800000000000000
+      internalID: 3370708090568319062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EVenMoreItems_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 120
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72439a60b4e009920800000000000000
+      internalID: 2994909467598468135
       vertices: []
       indices: 
       edges: []
