@@ -18,7 +18,7 @@ public class Stairs : MonoBehaviour
     private void Start()
     {
         Astar = GameObject.Find("Astar");
-        Astar.GetComponentInChildren<Grid>().gameObject.SetActive(true) ;
+        Astar.GetComponent<SetObjectActive>().astar.SetActive(true) ;
         //canvas = GameObject.FindGameObjectWithTag("Canvas");
        // transitioner = canvas.GetComponentInChildren<canvasTransition>();
         tooltip.SetActive(false);
