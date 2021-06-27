@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Scribe
+  itemDesc: +1 Bolt Size, -1 Attack Speed

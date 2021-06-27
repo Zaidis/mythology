@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,17 +20,19 @@ public class GameManager : MonoBehaviour
     public int keyCount { get; set; }
     public int boltSize { get; set; }
     public Color32 boltColor { get; set; }
-
+    [Header("UI Boxes")]
     public Image damageBox;
     public Image attSpeedBox;
     public Image boltSizeBox;
     public Image moveSpeedBox;
     public Image maxHealthBox;
     public TextMeshProUGUI keyCounter;
-
+    [Header("Settings")]
     public List<Image> itemImages = new List<Image>();
     public GameObject settingsMenu;
     public bool inSettings;
+    [Header("Pick up UI")]
+    public TextMeshProUGUI pickUpText;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -76,6 +79,14 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+    }
+
+    /// <summary>
+    /// Brings up the pick up text on the top right of the game. 
+    /// </summary>
+    public void PickUpItemUI(string name, string obj) {
+        pickUpText.text = name + ": " + obj;
+        pickUpText.GetComponent<PlayableDirector>().Play();
     }
 
     /// <summary>

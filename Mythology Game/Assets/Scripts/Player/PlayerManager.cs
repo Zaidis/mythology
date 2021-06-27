@@ -31,25 +31,30 @@ public class PlayerManager : MonoBehaviour
             //INCEASE MAX HEALTH
             GameManager.instance.IncreaseMaxHealth(1);
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Djed")) {
             //INCREASE HEALTH? MAYBE
             GameManager.instance.HealPlayer(2);
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Was")) {
             //INCREASE DAMAGE
             GameManager.instance.damage += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Jar")) {
             GameManager.instance.IncreaseMaxHealth(1);
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Black Lotus")) {
             GameManager.instance.attackSpeed += 1;
             GameManager.instance.boltColor = new Color32(0, 0, 0, 255);
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Crook")) {
             GameManager.instance.damage += 1;
@@ -60,6 +65,7 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.IncreaseMaxHealth(1);
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Flail")) {
             GameManager.instance.damage += 1;
@@ -70,19 +76,23 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.IncreaseMaxHealth(1);
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Papyrus")) {
             GameManager.instance.boltSize += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Mummy Hand")) {
             GameManager.instance.attackSpeed += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Blue Lotus")) {
             GameManager.instance.boltSize += 1;
             GameManager.instance.boltColor = new Color32(0, 150, 200, 255);
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Feather")) {
             GameManager.instance.speed += 1;
@@ -90,6 +100,7 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.health = GameManager.instance.maxHealth;
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Heart")) {
             GameManager.instance.IncreaseMaxHealth(1);
@@ -97,15 +108,18 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.health = GameManager.instance.maxHealth;
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Scribe")) {
             GameManager.instance.boltSize += 1;
             GameManager.instance.attackSpeed -= 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Eye")) {
             GameManager.instance.damage += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Cat Fangs")) {
 
@@ -117,6 +131,7 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.health = GameManager.instance.maxHealth;
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Book")) {
             GameManager.instance.attackSpeed += 1;
@@ -126,28 +141,34 @@ public class PlayerManager : MonoBehaviour
                 GameManager.instance.health = GameManager.instance.maxHealth;
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Lapis")) {
             GameManager.instance.speed += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Turquoise")) {
             GameManager.instance.boltSize += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Mallet")) {
             GameManager.instance.damage += 1;
             GameManager.instance.attackSpeed -= 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Cow Horns")) {
             GameManager.instance.damage -= 1;
             GameManager.instance.attackSpeed += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Beer")) {
             GameManager.instance.speed += 1;
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            GameManager.instance.PickUpItemUI(collision.gameObject.GetComponent<Item>().itemName, collision.gameObject.GetComponent<Item>().itemDesc);
             Destroy(collision.gameObject);
         }
         GameManager.instance.CheckStats();
