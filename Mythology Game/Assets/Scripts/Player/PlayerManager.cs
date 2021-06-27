@@ -104,7 +104,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(collision.gameObject);
         } else if (collision.gameObject.CompareTag("Heart")) {
             GameManager.instance.IncreaseMaxHealth(1);
-            if (ItemDatabase.instance.CheckIfUsed("Feather")) {
+            if (ItemDatabase.instance.CheckIfUsed("Ma'at's Feather")) {
                 GameManager.instance.health = GameManager.instance.maxHealth;
             }
             GameManager.instance.AddItemToUI(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
