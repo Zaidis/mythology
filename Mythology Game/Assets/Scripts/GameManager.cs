@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public int startingRoomNum;
     [Header("Chest Prefab")]
     public GameObject chest;
+    public GameObject Astar;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
         ChangeHealthBarUI();
         boltColor = new Color32(255, 255, 255, 255);
         SettingsStats();
+        Astar.SetActive(true);
     }
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {

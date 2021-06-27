@@ -555,6 +555,7 @@ MonoBehaviour:
   startingRoomDec: {fileID: 2110353670}
   startingRoomNum: 0
   chest: {fileID: 8459513759113590271, guid: a7ef8c4d7b121ed44adcca539d78a1cc, type: 3}
+  Astar: {fileID: 1736706222}
 --- !u!4 &68044350
 Transform:
   m_ObjectHideFlags: 0
@@ -6541,6 +6542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f4bbc54d90ded4c9adce23bf1c9d46, type: 3}
+--- !u!1 &1736706222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6880780334915989278, guid: c2f4bbc54d90ded4c9adce23bf1c9d46, type: 3}
+  m_PrefabInstance: {fileID: 1727098354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742855953
 GameObject:
   m_ObjectHideFlags: 0
