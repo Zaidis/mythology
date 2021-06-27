@@ -5,36 +5,33 @@ using UnityEngine;
 public class CobraAI : MonoBehaviour
 {
 
-    public GameObject child;
+    public float timer;
+    public GameObject bolt;
+    public float maxTimer;
+    public GameObject shootLoc;
+    [Header("Bolt")]
     public float speed;
-    public LayerMask mask;
+    public float boltSize;
+    public float damage;
     private void Start() {
-        child = this.transform.GetChild(0).gameObject;
-        speed = 2f;
+        timer = maxTimer;
+    }
+    private void Update() {
+        timer -= Time.deltaTime;
+        if(timer <= 0) {
+            Shoot();
+        }
+
+        shootLoc.transform.right = GameManager.instance.player.gameObject.transform.position - shootLoc.transform.position;
     }
 
-
-    private void FixedUpdate() {
-        transform.position = Vector3.MoveTowards(transform.position, child.transform.position, speed * Time.deltaTime);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, mask);
-        if (hit.collider != null) {
-            int rand = Random.Range(1, 3);
-            switch (rand) {
-                case 1:
-                    var ang = Quaternion.Euler(new Vector3(this.transform.rotation.x, transform.rotation.y, transform.rotation.z + 90));
-                    transform.rotation = Quaternion.Slerp(this.transform.rotation, ang, 100);
-                    break;
-                case 2:
-                    var ang2 = Quaternion.Euler(new Vector3(this.transform.rotation.x, transform.rotation.y, transform.rotation.z + 180));
-                    transform.rotation = Quaternion.Slerp(this.transform.rotation, ang2, 100);
-                    break;
-                case 3:
-                    var ang3 = Quaternion.Euler(new Vector3(this.transform.rotation.x, transform.rotation.y, transform.rotation.z + 270));
-                    transform.rotation = Quaternion.Slerp(this.transform.rotation, ang3, 100);
-                    break;
-
-            }
-
-        }
+    public void Shoot() {
+        GameObject b = Instantiate(bolt, shootLoc.transform.position, Quaternion.identity);
+        b.GetComponent<EnemyBolt>().speed = this.speed;
+        b.GetComponent<EnemyBolt>().boltSize = this.boltSize;
+        b.GetComponent<EnemyBolt>().damage = this.damage;
+        b.GetComponent<Rigidbody2D>().AddForce(shootLoc.transform.right * speed, ForceMode2D.Impulse);
+        timer = maxTimer;
+        //return;
     }
 }

@@ -31,6 +31,7 @@ TagManager:
   - Cow Horns
   - Beer
   - BOLT
+  - EBOLT
   layers:
   - Default
   - TransparentFX
