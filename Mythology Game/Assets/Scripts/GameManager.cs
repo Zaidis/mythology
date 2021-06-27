@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     public int startingRoomNum;
     [Header("Chest Prefab")]
     public GameObject chest;
+
+    public TextMeshProUGUI levelText;
+    public int levelCount = 1;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -65,6 +69,7 @@ public class GameManager : MonoBehaviour
         ChangeHealthBarUI();
         boltColor = new Color32(255, 255, 255, 255);
         SettingsStats();
+        
     }
     public void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
@@ -88,12 +93,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    private void OnLevelWasLoaded() {
+        levelCount++;
+    }
     public void RoomSet() {
         MapMaker maker = FindObjectOfType<MapMaker>();
         for (int i = 0; i < maker.middleSections.Count; i++) { //will handle enemy spawns 
             if(maker.middleSections[i] == startingRoom) {
-                startingRoomDec.transform.position = startingRoom.transform.position;
+                try {
+                    startingRoomDec.transform.position = startingRoom.transform.position;
+                } catch(Exception e) {
+
+                }
             } else {
                 //spawn enemies
                 maker.middleSections[i].transform.parent.GetComponent<E_Spawn>().SpawnEnemies();
@@ -103,11 +114,11 @@ public class GameManager : MonoBehaviour
         int rand;
         int rand2;
         do {
-            rand = Random.Range(0, maker.middleSections.Count);
+            rand = UnityEngine.Random.Range(0, maker.middleSections.Count);
         } while (rand == startingRoomNum);
 
         do {
-            rand2 = Random.Range(0, maker.middleSections.Count);
+            rand2 = UnityEngine.Random.Range(0, maker.middleSections.Count);
         } while (rand2 == startingRoomNum || rand2 == rand);
 
 
@@ -116,6 +127,10 @@ public class GameManager : MonoBehaviour
 
         maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(0).GetComponent<Tilemap>().color = Color.red;
         maker.middleSections[maker.middleSections.Count - 1].transform.parent.GetChild(1).GetComponent<Tilemap>().color = Color.red;
+
+        
+        levelText.text = "Cyrpt - Level " + levelCount.ToString();
+        
     }
 
     /// <summary>
@@ -189,7 +204,7 @@ public class GameManager : MonoBehaviour
             health = 0;
             //you died
             print("You have died.");
-            SceneManager.LoadScene(SceneManager.GetSceneByName("Menu").buildIndex);
+            SceneManager.LoadScene(0);
             
         }
         ChangeHealthBarUI();

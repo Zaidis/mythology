@@ -4,13 +4,22 @@ using UnityEngine;
 using Cinemachine;
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
     public Rigidbody2D rb;
     public Animator an;
     public CinemachineVirtualCamera cam;
+
     private void Awake() {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         an = this.gameObject.GetComponent<Animator>();
         cam = FindObjectOfType<CinemachineVirtualCamera>();
+
+        if(instance == null) {
+            instance = this;
+        } else {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start() {
@@ -22,10 +31,23 @@ public class PlayerManager : MonoBehaviour
         cam.LookAt = null;
         GameManager.instance.startingRoom = maker.middleSections[rand].gameObject; //gives the game manager the starting room
         GameManager.instance.startingRoomNum = rand;
+        //GameManager.instance.levelCount++;
         GameManager.instance.RoomSet();
     }
     //delete this update method when done testing
 
+    public void OnLevelWasLoaded() {
+        MapMaker maker = FindObjectOfType<MapMaker>();
+        int rand = maker.middleSections.Count / 2;
+        this.transform.position = maker.middleSections[rand].transform.position;
+        cam.LookAt = maker.middleSections[rand].gameObject.transform;
+        cam.Follow = maker.middleSections[rand].gameObject.transform;
+        cam.LookAt = null;
+        GameManager.instance.startingRoom = maker.middleSections[rand].gameObject; //gives the game manager the starting room
+        GameManager.instance.startingRoomNum = rand;
+        //GameManager.instance.levelCount++;
+        GameManager.instance.RoomSet();
+    }
     private void FixedUpdate() { 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
